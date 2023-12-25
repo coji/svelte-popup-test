@@ -22,13 +22,8 @@
 </div>
 
 <style>
-  div.portal {
-    position: absolute;
-    inset: 0;
-  }
-
   div.status {
-    position: absolute;
+    position: fixed;
     top: 10px;
     right: 10px;
     padding: 10px 20px 10px 20px;
@@ -39,7 +34,7 @@
   div.show {
     position: absolute;
     text-align: initial;
-    inset: 5px;
+    inset: 20px;
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
     background-color: red;
