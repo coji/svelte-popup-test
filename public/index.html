@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Svelte + TS</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        height: 100dvh;
+      }
+
+      header {
+        font-size: xx-large;
+      }
+
+      main {
+        display: grid;
+        place-items: center;
+      }
+
+      footer {
+        display: grid;
+        place-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module" src="/techtalk-popup.js"></script>
+
+    <header>Techtalk Popup Test</header>
+    <main>コンテンツ領域</main>
+    <footer>
+      <p>
+        Copyright &copy;
+        <a
+          href="https://twitter.com/techtalkjp/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          coji
+        </a>
+      </p>
+      <p>
+        <a
+          href="https://github.com/coji/svelte-popup-test"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
+      </p>
+    </footer>
+  </body>
+</html>
