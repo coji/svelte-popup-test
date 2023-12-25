@@ -17,7 +17,11 @@ export const createPopupState = (tenantId: string | undefined) => {
           return
         }
         // 初期化。設定を読み込んでスタンバイ状態に遷移
-        const response = await fetch(`/api/config/${tenantId}.json`)
+        const response = await fetch(
+          `${
+            import.meta.env.VITE_API_ROOT ?? import.meta.env.VITE_VERCEL_URL
+          }/config/${tenantId}.json`,
+        )
         if (response.ok) {
           config.set(await response.json())
           this.standby() // Proxy 経由で検知して遷移させるのでこの状態のアクション関数を呼ぶ
