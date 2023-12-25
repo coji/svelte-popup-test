@@ -12,7 +12,7 @@ export const createPopupState = () => {
     initial: {
       // 初期状態
       async initialize() {
-        // 初期化。設定を読み込んでスタンバイ状態に繊維
+        // 初期化。設定を読み込んでスタンバイ状態に遷移
         const response = await fetch('/api/config/1.json')
         if (response.ok) {
           config.set(await response.json())
