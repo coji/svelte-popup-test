@@ -3,5 +3,5 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 /** @type {import("svelte").Config}  */
 export default {
   preprocess: vitePreprocess(),
-  compilerOptions: { css: 'injected' },
+  compilerOptions: { css: 'injected', customElement: true },
 }

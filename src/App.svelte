@@ -1,8 +1,16 @@
+<svelte:options
+  customElement={{
+    tag: 'test-popup',
+    props: { tenantId: { reflect: true, type: 'String' } },
+  }}
+/>
+
 <script lang="ts">
   import { onMount } from 'svelte'
   import { createPopupState } from './states/popup'
 
-  const { state, config } = createPopupState()
+  export let tenantId: string | undefined = undefined
+  const { state, config } = createPopupState(tenantId)
   onMount(() => {
     state.initialize()
   })

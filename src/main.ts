@@ -1,9 +1,16 @@
-import App from './App.svelte'
+import './App.svelte'
 
-const appDiv = document.createElement('div')
-const app = new App({
-	target: appDiv,
+declare global {
+  interface Window {
+    tenantId?: string
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const tenantId = window['tenantId']
+  // Web Component として body 末尾に挿入
+  document.body.insertAdjacentHTML(
+    'beforeend',
+    `<test-popup tenantId="${tenantId}" />`,
+  )
 })
-document.body.appendChild(appDiv)
-
-export default app

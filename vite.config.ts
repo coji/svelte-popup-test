@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/main.ts',
-      fileName: 'techtalk-popup',
+      fileName: 'popup',
       formats: ['es'],
     },
   },
