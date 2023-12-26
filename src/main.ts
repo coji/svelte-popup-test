@@ -6,9 +6,11 @@ declare global {
   }
 }
 
-const tenantId = window['tenantId']
-// Web Component として body 末尾に挿入
-document.body.insertAdjacentHTML(
-  'beforeend',
-  `<test-popup tenantId="${tenantId}" />`,
-)
+window.addEventListener('DOMContentLoaded', () => {
+  const tenantId = window['tenantId']
+  // Web Component として body 末尾に挿入
+  document.body.insertAdjacentHTML(
+    'beforeend',
+    `<test-popup tenantId="${tenantId}" />`,
+  )
+})
