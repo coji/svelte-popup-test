@@ -9,6 +9,7 @@
   import { onMount } from 'svelte'
   import { createPopupState } from './states/popup'
 
+  export let debug: boolean = false
   export let tenantId: string | undefined = undefined
 
   const { state, config, image } = createPopupState(tenantId)
@@ -18,11 +19,13 @@
 </script>
 
 <div class="portal">
-  <div class="status">
-    <p>state: {$state}</p>
-    <p>config: {JSON.stringify($config)}</p>
-    <p>image: {$image}</p>
-  </div>
+  {#if debug}
+    <div class="status">
+      <p>state: {$state}</p>
+      <p>config: {JSON.stringify($config)}</p>
+      <p>image: {$image}</p>
+    </div>
+  {/if}
 
   {#if $state === 'show'}
     <div class="popup">
