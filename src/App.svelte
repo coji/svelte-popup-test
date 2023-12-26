@@ -9,9 +9,8 @@
   import { onMount } from 'svelte'
   import { createPopupState } from './states/popup'
 
-  console.log(import.meta.env)
-
   export let tenantId: string | undefined = undefined
+
   const { state, config } = createPopupState(tenantId)
   onMount(() => {
     state.initialize()
@@ -24,11 +23,15 @@
     <p>config: {JSON.stringify($config)}</p>
   </div>
 
-  <div class={$state === 'show' ? 'show' : 'hide'}>
-    <h1>Popup</h1>
-    <button name="close" type="button" on:click={state.close}>close</button>
-    <p>state: {$state}</p>
-  </div>
+  {#if $state === 'show'}
+    <div class="popup">
+      <div>
+        <h1>Popup</h1>
+        <p>state: {$state}</p>
+      </div>
+      <button name="close" type="button" on:click={state.close}>close</button>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -48,21 +51,19 @@
     background-color: #eee;
   }
 
-  div.show {
+  div.popup {
     position: absolute;
-    text-align: initial;
     inset: 20px;
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
     max-width: 500px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     margin: auto;
+    text-align: center;
+    display: grid;
+    place-items: center;
     border: 2px solid red;
     background-color: white;
-  }
-
-  div.hide {
-    display: none;
   }
 
   button[name='close'] {

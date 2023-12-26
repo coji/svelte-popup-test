@@ -13,6 +13,7 @@ export const createPopupState = (tenantId: string | undefined) => {
       // 初期状態
       async initialize() {
         if (tenantId === undefined) {
+          console.log('tenantId is undefined')
           this.error()
           return
         }
