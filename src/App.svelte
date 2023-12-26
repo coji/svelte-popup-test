@@ -62,6 +62,7 @@
     text-align: center;
     display: grid;
     background-color: white;
+    overflow: hidden;
   }
 
   div.popup img {
