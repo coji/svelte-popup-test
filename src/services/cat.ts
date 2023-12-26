@@ -4,3 +4,16 @@ export const fetchCatImage = async () => {
   if (!response.ok) throw new Error(json.message)
   return json[0].url
 }
+
+/**
+ * 先に画像を読み込んでキャッシュしておく。ポップアップ表示ですぐに表示できるようにするため。
+ * @param imageUrl
+ */
+export const prefetchCatImage = async (imageUrl: string) => {
+  const imgElement = document.createElement('img')
+  imgElement.src = imageUrl
+  imgElement.style.display = 'none'
+  document.body.appendChild(imgElement)
+  await imgElement.decode()
+  document.body.removeChild(imgElement)
+}
