@@ -16,5 +16,6 @@ export default defineConfig({
       fileName: 'popup',
       formats: ['es'],
     },
+    sourcemap: true,
   },
 })
