@@ -53,7 +53,11 @@
     inset: 20px;
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
-    background-color: red;
+    max-width: 500px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    margin: auto;
+    border: 2px solid red;
+    background-color: white;
   }
 
   div.hide {
