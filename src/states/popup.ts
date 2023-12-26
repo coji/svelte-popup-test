@@ -1,5 +1,6 @@
 import fsm from 'svelte-fsm'
 import { writable, get } from 'svelte/store'
+import { fetchCatImage } from '../services/cat'
 export interface PopupConfig {
   client: string
   wait: number
@@ -7,6 +8,7 @@ export interface PopupConfig {
 
 export const createPopupState = (tenantId: string | undefined) => {
   let config = writable<PopupConfig>()
+  let image = writable<string>()
 
   const state = fsm('initial', {
     initial: {
@@ -38,7 +40,10 @@ export const createPopupState = (tenantId: string | undefined) => {
     },
     standby: {
       // 待機状態
-      _enter() {
+      async _enter() {
+        const imageUrl = await fetchCatImage()
+        image.set(imageUrl)
+
         // ポップアップ表示待機
         setTimeout(() => this.show(), get(config)!.wait * 1000)
       },
@@ -56,5 +61,5 @@ export const createPopupState = (tenantId: string | undefined) => {
     },
   })
 
-  return { state, config }
+  return { state, config, image }
 }

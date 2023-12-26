@@ -11,7 +11,7 @@
 
   export let tenantId: string | undefined = undefined
 
-  const { state, config } = createPopupState(tenantId)
+  const { state, config, image } = createPopupState(tenantId)
   onMount(() => {
     state.initialize()
   })
@@ -21,14 +21,12 @@
   <div class="status">
     <p>state: {$state}</p>
     <p>config: {JSON.stringify($config)}</p>
+    <p>image: {$image}</p>
   </div>
 
   {#if $state === 'show'}
     <div class="popup">
-      <div>
-        <h1>Popup</h1>
-        <p>state: {$state}</p>
-      </div>
+      <img src={$image} alt="cat" />
       <button name="close" type="button" on:click={state.close}>close</button>
     </div>
   {/if}
@@ -54,16 +52,20 @@
   div.popup {
     position: absolute;
     inset: 20px;
-    padding: 10px 20px 10px 20px;
     border-radius: 10px;
     max-width: 500px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     margin: auto;
     text-align: center;
     display: grid;
-    place-items: center;
-    border: 2px solid red;
     background-color: white;
+  }
+
+  div.popup img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
   }
 
   button[name='close'] {
