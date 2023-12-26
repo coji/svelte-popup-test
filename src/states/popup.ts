@@ -18,9 +18,7 @@ export const createPopupState = (tenantId: string | undefined) => {
         }
         // 初期化。設定を読み込んでスタンバイ状態に遷移
         const response = await fetch(
-          `${
-            import.meta.env.VITE_API_ROOT ?? import.meta.env.VITE_VERCEL_URL
-          }/config/${tenantId}.json`,
+          `//${import.meta.env.VITE_VERCEL_URL}/api/config/${tenantId}.json`,
         )
         if (response.ok) {
           config.set(await response.json())

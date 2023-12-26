@@ -9,6 +9,8 @@
   import { onMount } from 'svelte'
   import { createPopupState } from './states/popup'
 
+  console.log(import.meta.env)
+
   export let tenantId: string | undefined = undefined
   const { state, config } = createPopupState(tenantId)
   onMount(() => {
