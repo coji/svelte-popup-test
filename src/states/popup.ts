@@ -41,12 +41,13 @@ export const createPopupState = (tenantId: string | undefined) => {
     standby: {
       // 待機状態
       async _enter() {
+        // ポップアップ表示待機
+        setTimeout(() => this.show(), get(config)!.wait * 1000)
+
+        // 画像を先読み
         const imageUrl = await fetchCatImage()
         await prefetchCatImage(imageUrl)
         image.set(imageUrl)
-
-        // ポップアップ表示待機
-        setTimeout(() => this.show(), get(config)!.wait * 1000)
       },
       show: () => 'show',
     },
